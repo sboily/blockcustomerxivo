@@ -6,7 +6,7 @@
             <description><![CDATA[Ajoute un bloc permettant d&#039;avoir un lien &amp;quot;Appeler le service client par XiVO&amp;quot;  sur les pages produits.]]></description>
             <author><![CDATA[]]></author>
             <tab><![CDATA[front_office_features]]></tab>
-            <is_configurable>0</is_configurable>
+            <is_configurable>1</is_configurable>
             <need_instance>1</need_instance>
 	<limited_countries></limited_countries>
         </module>
