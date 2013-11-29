@@ -5,7 +5,9 @@ $('document').ready(function(){
 
     $('#sendCall').click(function(){
         var phone_number = $('#phone_number').val();
-        var id_product = $('#id_product_comment_send').val();
+        var product_id = $('#product_id').val();
+        var product_link = $('#product_link').val();
+        var product_title = $('#product_title').val();
         var module_dir = $('#module_dir').val();
         if (phone_number && !isNaN(id_product))
             {
@@ -13,7 +15,7 @@ $('document').ready(function(){
                     url: module_dir + "doCall.php",
                     type: "POST",
                     headers: {"cache-control": "no-cache"},
-                    data: {action: 'callUs', secure_key: '', phone_number: phone_number, id_product: id_product},
+                    data: {action: 'callUs', phone_number: phone_number, product_id: product_id, product_link: product_link, product_title: product_title},
                     dataType: "json",
                     success: function(result) {
                         $.fancybox.close();

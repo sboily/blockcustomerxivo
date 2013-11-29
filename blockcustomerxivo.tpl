@@ -25,7 +25,7 @@
 
 
 <li id="blockcustomerxivo">
-	<a id="call_button" href="#call_form" data-url="{$product_link}" data-product="{$product_title}">{l s='Call us for more informations' mod='blockcustomerxivo'}</a>
+	<a id="call_button" href="#call_form">{l s='Call us for more informations' mod='blockcustomerxivo'}</a>
 </li>
 
 <div style="display: none;">
@@ -46,13 +46,15 @@
                 <div class="form_container">
                     <p class="intro_form">{l s='Please give us your number' mod='blockcustomerxivo'} :</p>
                     <p class="text">
-                        <label for="phone_number">{l s='Phone number' mod='blockcustomerxivo'} <sup class="required">*</sup> :</label>
+                        <label for="phone_number">{l s='Phone number' mod='blockcustomerxivo'} <sup class="required">*</sup> : </label>
                         <input id="phone_number" name="phone_number" type="text" value=""/>
                     </p>
                     <p class="txt_required"><sup class="required">*</sup> {l s='Required fields' mod='blockcustomerxivo'}</p>
                 </div>
                 <p class="submit">
-                    <input id="id_product_comment_send" name="id_product" type="hidden" value="{$product->id}" />
+                    <input id="product_link" name="product_link" type="hidden" value="{$product_link}" />
+                    <input id="product_title" name="product_title" type="hidden" value="{$product_title}" />
+                    <input id="product_id" name="product_id" type="hidden" value="{$product->id}" />
                     <input id="module_dir" name="module_dir" type="hidden" value="{$module_dir}" />
                     <a href="#" onclick="$.fancybox.close();">{l s='Cancel' mod='blockcustomerxivo'}</a>&nbsp;{l s='or' mod='blockcustomerxivo'}&nbsp;
                     <input id="sendCall" class="button" name="sendCall" type="submit" value="{l s='Call' mod='blockcustomerxivo'}" />

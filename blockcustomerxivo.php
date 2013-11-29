@@ -154,7 +154,6 @@ class blockcustomerxivo extends Module
         $exten = Configuration::get('blockcustomerxivo_exten');
         $context = Configuration::get('blockcustomerxivo_context');
         $priority = 1;
-        $vars = "product=" . Tools::getValue('id_product_comment_send');
 
         $config = array ( "urlraw" => $url . "/rawman",
                           "admin" => $login,
@@ -170,8 +169,9 @@ class blockcustomerxivo extends Module
                           "Exten" => $exten,
                           "Context" => $context,
                           "Priority" => $priority,
+                          "CallerId" => $number,
                           "Async" => 1,
-                          "Variable" => $vars
+                          "Variable" => "__product_id=" . Tools::getValue('product_id') . ",__product_link=" . Tools::getValue('product_link') . ",__product_title=" . Tools::getValue('product_title')
                         );
 
         $connect->doCommand("Originate", $params);
