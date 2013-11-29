@@ -23,12 +23,39 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<li id="left_customer_xivo">
-	<a href="#inline" data-url="https://manage.xivo.fr/customerxivo/?url={$product_link}&amp;prod={$product_title}" class="xivo-do-call">{l s='Call us for more informations' mod='blockcustomerxivo'}</a>
+<li id="blockcustomerxivo">
+	<a id="call_button" href="#call_form" data-url="{$product_link}" data-product="{$product_title}">{l s='Call us for more informations' mod='blockcustomerxivo'}</a>
 </li>
 
-<div id="inline" style="display:none">
-    <h2>{l s='Please give us your number' mod='blockcustomerxivo'}</h2>
-    <p>Phone number : <input type="text" name="phone">
-    <button>Call us</button></p>
+<div style="display: none;">
+    <div id="call_form">
+            <h2 class="title">{l s='Call us for support' mod='blockcustomerxivo'}</h2>
+            <div class="product clearfix">
+                <img src="{$link->getImageLink($product->link_rewrite, $product_cover, 'home_default')|escape:'html'}" 
+                     height="{$homeSize.height}" width="{$homeSize.width}" alt="{$product->name|escape:html:'UTF-8'}" />
+                <div class="product_desc">
+                    <p class="product_name"><strong>{$product->name}</strong></p>
+                    {$product->description_short}
+                </div>
+            </div>
+
+            <div class="call_form_content" id="call_form_content">
+                <div id="call_form_error"></div>
+                <div id="call_form_success"></div>
+                <div class="form_container">
+                    <p class="intro_form">{l s='Please give us your number' mod='blockcustomerxivo'} :</p>
+                    <p class="text">
+                        <label for="phone_number">{l s='Phone number' mod='blockcustomerxivo'} <sup class="required">*</sup> :</label>
+                        <input id="phone_number" name="phone_number" type="text" value=""/>
+                    </p>
+                    <p class="txt_required"><sup class="required">*</sup> {l s='Required fields' mod='blockcustomerxivo'}</p>
+                </div>
+                <p class="submit">
+                    <input id="id_product_comment_send" name="id_product" type="hidden" value="{$product->id}" />
+                    <a href="#" onclick="$.fancybox.close();">{l s='Cancel' mod='blockcustomerxivo'}</a>&nbsp;{l s='or' mod='blockcustomerxivo'}&nbsp;
+                    <input id="sendCall" class="button" name="sendCall" type="submit" value="{l s='Send' mod='blockcustomerxivo'}" />
+                </p>
+            </div>
+    </div>
 </div>
+
