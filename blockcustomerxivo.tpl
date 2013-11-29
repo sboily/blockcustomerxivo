@@ -23,6 +23,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
+
 <li id="blockcustomerxivo">
 	<a id="call_button" href="#call_form" data-url="{$product_link}" data-product="{$product_title}">{l s='Call us for more informations' mod='blockcustomerxivo'}</a>
 </li>
@@ -52,8 +53,9 @@
                 </div>
                 <p class="submit">
                     <input id="id_product_comment_send" name="id_product" type="hidden" value="{$product->id}" />
+                    <input id="module_dir" name="module_dir" type="hidden" value="{$module_dir}" />
                     <a href="#" onclick="$.fancybox.close();">{l s='Cancel' mod='blockcustomerxivo'}</a>&nbsp;{l s='or' mod='blockcustomerxivo'}&nbsp;
-                    <input id="sendCall" class="button" name="sendCall" type="submit" value="{l s='Send' mod='blockcustomerxivo'}" />
+                    <input id="sendCall" class="button" name="sendCall" type="submit" value="{l s='Call' mod='blockcustomerxivo'}" />
                 </p>
             </div>
     </div>

@@ -142,18 +142,19 @@ class blockcustomerxivo extends Module
 		}
 	}
 
-    public function doCall($params)
+    public function doCall()
     {
+
+        $number = Tools::getValue('phone_number');
 
         $url = Configuration::get('blockcustomerxivo_xivo_url');
         $login = Configuration::get('blockcustomerxivo_login');
         $secret = Configuration::get('blockcustomerxivo_secret');
-        $number = Configuration::get('blockcustomerxivo_number');
         $outcontext = Configuration::get('blockcustomerxivo_outcontext');
         $exten = Configuration::get('blockcustomerxivo_exten');
         $context = Configuration::get('blockcustomerxivo_context');
         $priority = 1;
-        $vars = "test=pouet";
+        $vars = "product=" . Tools::getValue('id_product_comment_send');
 
         $config = array ( "urlraw" => $url . "/rawman",
                           "admin" => $login,
