@@ -55,7 +55,7 @@ class blockcustomerxivo extends Module
                                       Configuration::updateValue('blockcustomerxivo_outcontext', '') && 
                                       Configuration::updateValue('blockcustomerxivo_exten', '') && 
                                       Configuration::updateValue('blockcustomerxivo_context', '') && 
-                                      $this->registerHook('extraLeft'));
+                                      $this->registerHook('displayLeftColumnProduct'));
 	}
 	
 	public function uninstall()
@@ -67,7 +67,7 @@ class blockcustomerxivo extends Module
                                     AND Configuration::deleteByName('blockcustomerxivo_outcontext') 
                                     AND Configuration::deleteByName('blockcustomerxivo_exten') 
                                     AND Configuration::deleteByName('blockcustomerxivo_context') 
-                                    AND $this->unregisterHook(Hook::getIdByName('extraLeft')));
+                                    AND $this->unregisterHook(Hook::getIdByName('displayLeftColumnProduct')));
 	}
 
     public function getContent()
@@ -114,7 +114,7 @@ class blockcustomerxivo extends Module
         </form>';
     }
 	
-	public function hookExtraLeft($params)
+	public function hookdisplayLeftColumnProduct($params)
 	{
 		global $smarty, $cookie, $link;		
 		
