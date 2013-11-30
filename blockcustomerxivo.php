@@ -70,112 +70,111 @@ class blockcustomerxivo extends Module
                                     AND $this->unregisterHook(Hook::getIdByName('displayLeftColumnProduct')));
 	}
 
-    public function getContent()
-    {
-        // If we try to update the settings
-        $output = '';
-        if (isset($_POST['submitModule']))
-        {   
-            Configuration::updateValue('blockcustomerxivo_xivo_url', (($_POST['xivo_url'] != '') ? $_POST['xivo_url']: ''));
-            Configuration::updateValue('blockcustomerxivo_login', (($_POST['login'] != '') ? $_POST['login']: ''));     
-            Configuration::updateValue('blockcustomerxivo_secret', (($_POST['secret'] != '') ? $_POST['secret']: ''));             
-            Configuration::updateValue('blockcustomerxivo_outcontext', (($_POST['outcontext'] != '') ? $_POST['outcontext']: ''));             
-            Configuration::updateValue('blockcustomerxivo_exten', (($_POST['exten'] != '') ? $_POST['exten']: ''));             
-            Configuration::updateValue('blockcustomerxivo_context', (($_POST['context'] != '') ? $_POST['context']: ''));             
-            $this->_clearCache('blockcustomerxivo.tpl');
-            $output = '<div class="conf confirm">'.$this->l('Configuration updated').'</div>';
-        }
+	public function getContent()
+	{
+		$output = '';
+		if (isset($_POST['submitModule']))
+		{   
+			Configuration::updateValue('blockcustomerxivo_xivo_url', (($_POST['xivo_url'] != '') ? $_POST['xivo_url']: ''));
+			Configuration::updateValue('blockcustomerxivo_login', (($_POST['login'] != '') ? $_POST['login']: ''));     
+			Configuration::updateValue('blockcustomerxivo_secret', (($_POST['secret'] != '') ? $_POST['secret']: ''));             
+			Configuration::updateValue('blockcustomerxivo_outcontext', (($_POST['outcontext'] != '') ? $_POST['outcontext']: ''));             
+			Configuration::updateValue('blockcustomerxivo_exten', (($_POST['exten'] != '') ? $_POST['exten']: ''));             
+			Configuration::updateValue('blockcustomerxivo_context', (($_POST['context'] != '') ? $_POST['context']: ''));             
+			$this->_clearCache('blockcustomerxivo.tpl');
+			$output = '<div class="conf confirm">'.$this->l('Configuration updated').'</div>';
+		}
 
-        return '
-        <h2>'.$this->displayName.'</h2>
-        '.$output.'
-        <form action="'.Tools::htmlentitiesutf8($_SERVER['REQUEST_URI']).'" method="post">
-            <fieldset class="width2">               
-                <label for="xivo_url">'.$this->l('XiVO URL: ').'</label>
-                <input type="text" id="xivo_url" name="xivo_url" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_xivo_url') != "") ? Configuration::get('blockcustomerxivo_xivo_url') : "").'" />
-                <div class="clear">&nbsp;</div>     
-                <label for="login">'.$this->l('Login: ').'</label>
-                <input type="text" id="login" name="login" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_login') != "") ? Configuration::get('blockcustomerxivo_login') : "").'" />
-                <div class="clear">&nbsp;</div>     
-                <label for="secret">'.$this->l('Secret: ').'</label>
-                <input type="text" id="secret" name="secret" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_secret') != "") ? Configuration::get('blockcustomerxivo_secret') : "").'" />
-                <div class="clear">&nbsp;</div>                     
-                <label for="outcontext">'.$this->l('Out context: ').'</label>
-                <input type="text" id="outcontext" name="outcontext" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_outcontext') != "") ? Configuration::get('blockcustomerxivo_outcontext') : "").'" />
-                <div class="clear">&nbsp;</div>                     
-                <label for="exten">'.$this->l('Internal extension: ').'</label>
-                <input type="text" id="exten" name="exten" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_exten') != "") ? Configuration::get('blockcustomerxivo_exten') : "").'" />
-                <div class="clear">&nbsp;</div>                     
-                <label for="context">'.$this->l('Internal context: ').'</label>
-                <input type="text" id="context" name="context" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_context') != "") ? Configuration::get('blockcustomerxivo_context') : "").'" />
-                <div class="clear">&nbsp;</div>                     
-                <br /><center><input type="submit" name="submitModule" value="'.$this->l('Update settings').'" class="button" /></center>
-            </fieldset>
-        </form>';
-    }
+		return '
+		<h2>'.$this->displayName.'</h2>
+		'.$output.'
+		<form action="'.Tools::htmlentitiesutf8($_SERVER['REQUEST_URI']).'" method="post">
+		    <fieldset class="width2">               
+			<label for="xivo_url">'.$this->l('XiVO URL: ').'</label>
+			<input type="text" id="xivo_url" name="xivo_url" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_xivo_url') != "") ? Configuration::get('blockcustomerxivo_xivo_url') : "").'" />
+			<div class="clear">&nbsp;</div>     
+			<label for="login">'.$this->l('Login: ').'</label>
+			<input type="text" id="login" name="login" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_login') != "") ? Configuration::get('blockcustomerxivo_login') : "").'" />
+			<div class="clear">&nbsp;</div>     
+			<label for="secret">'.$this->l('Secret: ').'</label>
+			<input type="text" id="secret" name="secret" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_secret') != "") ? Configuration::get('blockcustomerxivo_secret') : "").'" />
+			<div class="clear">&nbsp;</div>                     
+			<label for="outcontext">'.$this->l('Out context: ').'</label>
+			<input type="text" id="outcontext" name="outcontext" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_outcontext') != "") ? Configuration::get('blockcustomerxivo_outcontext') : "").'" />
+			<div class="clear">&nbsp;</div>                     
+			<label for="exten">'.$this->l('Internal extension: ').'</label>
+			<input type="text" id="exten" name="exten" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_exten') != "") ? Configuration::get('blockcustomerxivo_exten') : "").'" />
+			<div class="clear">&nbsp;</div>                     
+			<label for="context">'.$this->l('Internal context: ').'</label>
+			<input type="text" id="context" name="context" value="'.Tools::safeOutput((Configuration::get('blockcustomerxivo_context') != "") ? Configuration::get('blockcustomerxivo_context') : "").'" />
+			<div class="clear">&nbsp;</div>                     
+			<br /><center><input type="submit" name="submitModule" value="'.$this->l('Update settings').'" class="button" /></center>
+		    </fieldset>
+		</form>';
+	}
 	
 	public function hookdisplayLeftColumnProduct($params)
 	{
 		global $smarty, $cookie, $link;		
 		
-		$id_product = Tools::getValue('id_product');
-        $product = new Product((int)Tools::getValue('id_product'), false, $this->context->language->id);
-        $image = Product::getCover((int)$product->id);
+		$product = new Product((int)Tools::getValue('id_product'), false, $this->context->language->id);
+		$image = Product::getCover((int)$product->id);
 
-		if (isset($id_product) && $id_product != '')
+		if (isset($product) && $product != '')
 		{		
 			$product_infos = $this->context->controller->getProduct();
 			$smarty->assign(array(
-				'product_link' => urlencode($link->getProductLink($product_infos)),
-				'product_title' => urlencode($product_infos->name),
-                'xivo_url' => Configuration::get('blockcustomerxivo_xivo_url'),
-                'product' => $product,
-                'product_cover' => (int)$product->id.'-'.(int)$image['id_image'],
-            ));
+					'xivo_url' => Configuration::get('blockcustomerxivo_xivo_url'),
+					'product' => $product,
+					'product_cover' => (int)$product->id.'-'.(int)$image['id_image'],
+					'product_link' => urlencode($link->getProductLink($product_infos)),
+					'product_title' => urlencode($product_infos->name),
+			));
 
-
-            $this->context->controller->addCSS($this->_path.'blockcustomerxivo.css', 'all');
-            $this->context->controller->addJS($this->_path.'blockcustomerxivo.js', 'all');
+			$this->context->controller->addCSS($this->_path.'blockcustomerxivo.css', 'all');
+			$this->context->controller->addJS($this->_path.'blockcustomerxivo.js', 'all');
 			return $this->display(__FILE__, 'blockcustomerxivo.tpl');
 		} else {
 			return '';
 		}
 	}
 
-    public function doCall()
-    {
+	public function doCall()
+	{
 
-        $number = Tools::getValue('phone_number');
+		$number = Tools::getValue('phone_number');
 
-        $url = Configuration::get('blockcustomerxivo_xivo_url');
-        $login = Configuration::get('blockcustomerxivo_login');
-        $secret = Configuration::get('blockcustomerxivo_secret');
-        $outcontext = Configuration::get('blockcustomerxivo_outcontext');
-        $exten = Configuration::get('blockcustomerxivo_exten');
-        $context = Configuration::get('blockcustomerxivo_context');
-        $priority = 1;
+		$url = Configuration::get('blockcustomerxivo_xivo_url');
+		$login = Configuration::get('blockcustomerxivo_login');
+		$secret = Configuration::get('blockcustomerxivo_secret');
+		$outcontext = Configuration::get('blockcustomerxivo_outcontext');
+		$exten = Configuration::get('blockcustomerxivo_exten');
+		$context = Configuration::get('blockcustomerxivo_context');
+		$priority = 1;
 
-        $config = array ( "urlraw" => $url . "/rawman",
-                          "admin" => $login,
-                          "secret" => $secret,
-                          "authtype" => "plaintext",
-                          "cookiefile" => "/tmp/ajam.cookies",
-                          "debug" => null
-                        );
+		$config = array ( "urlraw" => $url . "/rawman",
+				  "admin" => $login,
+				  "secret" => $secret,
+				  "authtype" => "plaintext",
+				  "cookiefile" => "/tmp/ajam.cookies",
+				  "debug" => null
+				);
 
-        $connect = new Ajam($config);
+		$connect = new Ajam($config);
 
-        $params = array ( "Channel" => "Local/". $number ."@" . $outcontext,
-                          "Exten" => $exten,
-                          "Context" => $context,
-                          "Priority" => $priority,
-                          "CallerId" => $number,
-                          "Async" => 1,
-                          "Variable" => "__product_id=" . Tools::getValue('product_id') . ",__product_link=" . Tools::getValue('product_link') . ",__product_title=" . Tools::getValue('product_title')
-                        );
+		$params = array ( "Channel" => "Local/". $number ."@" . $outcontext,
+				  "Exten" => $exten,
+				  "Context" => $context,
+				  "Priority" => $priority,
+				  "CallerId" => $number,
+				  "Async" => 1,
+				  "Variable" => "__product_id=" . Tools::getValue('product_id') . 
+						",__product_link=" . Tools::getValue('product_link') . 
+						",__product_title=" . Tools::getValue('product_title')
+				);
 
-        $connect->doCommand("Originate", $params);
-    }
-
+		$connect->doCommand("Originate", $params);
+	}
 }
+
 ?>
